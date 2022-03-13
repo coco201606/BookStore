@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <head>
+        <title>detail</title>
+        <link rel="stylesheet" type="text/css" href="/resources/css/style.css"/>
+    </head>
+    <body>
+        <ui:composition>
+            <h:form>
+                <div id="book_img">
+                    <p:graphicImage value ="#{orderHandler.image}">
+                        <f:param name="book_id"
+                                 value="#{orderHandler.disp_detail.id}"/>
+                    </p:graphicImage>
+                </div>
+                <div id="exp">
+                    <div id="back_Btn">
+                        <h:link outcome="index">
+                            <h:graphicImage library="images" name="back.png"/>
+                        </h:link>
+                    </div>
+                    <h:outputText value="#{orderHandler.disp_detail.title}"
+                                 styleClass="title_detail"/>
+                    <h:outputText value="#{orderHandler.disp_detail.price}"
+                                  styleClass="price">
+                        <f:convertNumber type="currency" locale="ja_JP"/>
+                    </h:outputText>
+                    <h:outputText value="#{orderHandler.disp_detail.exp}"
+                                 styleClass="text"/>
+                    <div id="cart_Btn">
+                        <h:commandLink action="#{orderHandler.addToCart()}">
+                            <h:graphicImage library="images" name="cart_in.png"/>
+                        </h:commandLink>
+                    </div>
+                </div>
+            </h:form>
+        </ui:composition>
+    </body>
+</html>
+
