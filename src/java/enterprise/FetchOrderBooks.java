@@ -32,7 +32,7 @@ public class FetchOrderBooks {
         TypedQuery<OrderBooks> q = em.createNamedQuery
                             (OrderBooks.ORDER_HISTORY,OrderBooks.class);
         //名前付きパラメータにユーザーIDをセット
-        q.setParameter("user_id",id);
+        q.setParameter("userId",id);
         //クエリをジックしてListオブジェクトを返す
         return q.getResultList();
     }

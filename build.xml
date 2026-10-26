@@ -10,6 +10,17 @@
 <project name="BookStore" default="default" basedir=".">
     <description>Builds, tests, and runs the project BookStore.</description>
     <import file="nbproject/build-impl.xml"/>
+
+    <target name="test" depends="init,compile-test" description="Compile and run JUnit 5 tests.">
+        <java classname="org.junit.platform.console.ConsoleLauncher" dir="${basedir}" fork="true" failonerror="true">
+            <classpath>
+                <path path="${run.test.classpath}"/>
+            </classpath>
+            <arg value="execute"/>
+            <arg value="--scan-class-path=${build.test.classes.dir}"/>
+            <arg value="--fail-if-no-tests"/>
+        </java>
+    </target>
     <!--
 
     There exist several targets which are by default empty and which can be 

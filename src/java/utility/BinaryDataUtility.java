@@ -29,7 +29,10 @@ public class BinaryDataUtility {
 	**********************************************/
 	public static byte[] readBinaryData(String relative){
     	String filePath = getRealPath(relative);		// 絶対パスに変換
-		Path path       = Paths.get(filePath);	// Pathオブジェクトを作成
+		return readBinaryFile(Paths.get(filePath));
+    }
+
+	static byte[] readBinaryFile(Path path) {
 		byte[]	binaryData = null;
 		try {
 			binaryData	= Files.readAllBytes(path);		// 全データを読み出す
@@ -65,4 +68,3 @@ public class BinaryDataUtility {
 		return  context.getRealPath(path);
 	}
 }
-
