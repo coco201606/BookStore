@@ -6,7 +6,7 @@
 package enterprise;
 
 import java.util.List;
-import javax.persistence.EntityManager;
+import jakarta.persistence.EntityManager;
 
 /**
  * 2021.8.1 ジェネリッククラス
@@ -67,7 +67,7 @@ public abstract class AbstractFacade<T> {
      * @return エンティティのリスト
      **************************************************************************/
     public List<T> findAll() {
-        javax.persistence.criteria.CriteriaQuery cq
+        jakarta.persistence.criteria.CriteriaQuery cq
                 = getEntityManager().getCriteriaBuilder().createQuery();
         cq.select(cq.from(entityClass));
         return getEntityManager().createQuery(cq).getResultList();
@@ -79,10 +79,10 @@ public abstract class AbstractFacade<T> {
      * @return range[0]番目からrange[1]番目までのエンティティのリスト
      **************************************************************************/
     public List<T> findRange(int[] range) {
-        javax.persistence.criteria.CriteriaQuery cq
+        jakarta.persistence.criteria.CriteriaQuery cq
                 = getEntityManager().getCriteriaBuilder().createQuery();
         cq.select(cq.from(entityClass));
-        javax.persistence.Query q = getEntityManager().createQuery(cq);
+        jakarta.persistence.Query q = getEntityManager().createQuery(cq);
         q.setMaxResults(range[1] - range[0] + 1);
         q.setFirstResult(range[0]);
         return q.getResultList();
@@ -93,11 +93,11 @@ public abstract class AbstractFacade<T> {
      * @return レコードの総件数を示すLong型の値
      **************************************************************************/
     public int count() {
-        javax.persistence.criteria.CriteriaQuery cq 
+        jakarta.persistence.criteria.CriteriaQuery cq
                 = getEntityManager().getCriteriaBuilder().createQuery();
-        javax.persistence.criteria.Root<T> rt = cq.from(entityClass);
+        jakarta.persistence.criteria.Root<T> rt = cq.from(entityClass);
         cq.select(getEntityManager().getCriteriaBuilder().count(rt));
-        javax.persistence.Query q = getEntityManager().createQuery(cq);
+        jakarta.persistence.Query q = getEntityManager().createQuery(cq);
         return ((Long) q.getSingleResult()).intValue();
     }
     

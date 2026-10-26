@@ -7,7 +7,7 @@ package entity;
 
 import java.io.Serializable;
 import java.util.Objects;
-import javax.persistence.Embeddable;
+import jakarta.persistence.Embeddable;
 
 /**
  * 2021.7.31 複合キークラス

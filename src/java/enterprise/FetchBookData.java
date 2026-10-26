@@ -9,10 +9,10 @@ import utility.Pagenate;
 import entity.BookData;
 import entity.Genre;
 import java.util.List;
-import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.TypedQuery;
+import jakarta.ejb.Stateless;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.TypedQuery;
 
 /**
  * 2021.8.1 Bookテーブルに登録されている書籍データを取得

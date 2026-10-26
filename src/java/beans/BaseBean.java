@@ -15,14 +15,14 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
-import javax.annotation.PostConstruct;
-import javax.ejb.EJB;
-import javax.faces.application.FacesMessage;
-import javax.faces.context.ExternalContext;
-import javax.faces.context.FacesContext;
-import javax.faces.event.PhaseId;
-import javax.inject.Inject;
-import javax.servlet.http.HttpServletRequest;
+import jakarta.annotation.PostConstruct;
+import jakarta.ejb.EJB;
+import jakarta.faces.application.FacesMessage;
+import jakarta.faces.context.ExternalContext;
+import jakarta.faces.context.FacesContext;
+import jakarta.faces.event.PhaseId;
+import jakarta.inject.Inject;
+import jakarta.servlet.http.HttpServletRequest;
 import org.primefaces.model.DefaultStreamedContent;
 import org.primefaces.model.StreamedContent;
 
@@ -136,14 +136,12 @@ public class BaseBean implements Serializable {
                 bookDataFacade.find(Long.valueOf(value))
             );
 
-            // エンティティのgetImg1()メソッドでサムネイルのデータを取得し、
-            // 入力ストリームオブジェクトに格納
-            ByteArrayInputStream in =
-                    new ByteArrayInputStream(entity.getImg1());
-            // 入力ストリームオブジェクトをコンテンツの
-            // ストリームオブジェクトに格納
-            DefaultStreamedContent ds =
-                    new DefaultStreamedContent(in);
+            // エンティティからサムネイルデータを取得
+            byte[] image = entity.getImg1();
+            // PrimeFaces 14 accepts a serializable stream supplier.
+            DefaultStreamedContent ds = DefaultStreamedContent.builder()
+                    .stream(() -> new ByteArrayInputStream(image))
+                    .build();
             // DefaultStreamedContentオブジェクトを返す
             return ds;
         }
@@ -165,12 +163,11 @@ public class BaseBean implements Serializable {
             BookData entity = (BookData) (
                 bookDataFacade.find(Long.valueOf(value))
             );
-                // エンティティのgetImg2())ソッドで拡大表示用の画像
-                // データを取得し、入力ストリームオブジェクトに格納
-                ByteArrayInputStream in =
-                        new ByteArrayInputStream(entity.getImg2());
-                DefaultStreamedContent ds =
-                        new DefaultStreamedContent(in);
+                // エンティティから拡大表示用の画像データを取得
+                byte[] image = entity.getImg2();
+                DefaultStreamedContent ds = DefaultStreamedContent.builder()
+                        .stream(() -> new ByteArrayInputStream(image))
+                        .build();
                 return ds;
         }
     }

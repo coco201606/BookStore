@@ -6,7 +6,7 @@
 package entity;
 
 import java.io.Serializable;
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 /*
  * 2021.7.25 BookDataのエンティティ

@@ -6,7 +6,7 @@
 package utility;
 
 import java.io.Serializable;
-import javax.enterprise.context.SessionScoped;
+import jakarta.enterprise.context.SessionScoped;
 
 /**
  * 2021.8.1 ページング処理を行う

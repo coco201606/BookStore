@@ -8,9 +8,9 @@ package beans;
 import enterprise.UserAccountFacade;
 import enterprise.FetchUserAccount;
 import java.io.Serializable;
-import javax.ejb.EJB;
-import javax.enterprise.context.RequestScoped;
-import javax.inject.Named;
+import jakarta.ejb.EJB;
+import jakarta.enterprise.context.RequestScoped;
+import jakarta.inject.Named;
 import entity.*;
 import utility.*;
 

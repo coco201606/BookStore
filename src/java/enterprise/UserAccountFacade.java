@@ -6,9 +6,9 @@
 package enterprise;
 
 import entity.UserAccount;
-import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
+import jakarta.ejb.Stateless;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 
 /**
  * 2021.8.1 BookDataのEJB

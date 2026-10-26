@@ -8,7 +8,7 @@ package entity;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 /**
  * 2021.7.31 ORDERBOOKテーブルに対応するエンティティクラス
@@ -36,7 +36,7 @@ public class OrderBooks implements Serializable {
     private String cust_demand;
     private Integer cust_payment;
     private Integer total_amount;
-    @Temporal(javax.persistence.TemporalType.DATE)
+    @Temporal(jakarta.persistence.TemporalType.DATE)
     private Date po_date;
     @OneToMany(cascade={CascadeType.ALL})
     private List<OrderState> orderState;
